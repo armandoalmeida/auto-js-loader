@@ -6,7 +6,7 @@ Loader utility for `Node.js` to load different set of files in a folder based on
 
 Use `require('auto-js-loader')('DIRECTORY')` when "DIRECTORY" is the directory of the files you want to load.
 
-NOTE: The file is loaded only one time. If you want to load the file again, you will need to reload the application. 
+NOTE: The file is loaded only once. If you want to load the file again, you will need to reload the application. 
 
 # Quick intro to usage
 

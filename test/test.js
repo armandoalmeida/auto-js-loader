@@ -10,11 +10,9 @@ var processDir = __dirname;
 describe(modName, function() {
     beforeEach(function() {
         // reset node variables to defaults
-        // delete process.env.NODE_ENV;
-        // delete process.env.NODE_CONFIG_DIR;
-        // delete process.env.NODE_CONFIG_LOG;
+        delete process.env.NODE_CONFIG_LOG;
         // prevent halting the app when config load fails, to catch the error
-        //process.env.NODE_CONFIG_NO_HALT = true;
+        process.env.NODE_CONFIG_NO_HALT = true;
 
         // set current working directory of the process to the same dir as this script is located in
         // this allows to have tests and their data in a dedicated directory
@@ -27,7 +25,7 @@ describe(modName, function() {
     describe('unsuccessful require', function() {
         it('should fail to load files in non-existing directory', function() {
             var config = require(modFile)('blah');
-            should(config).equal(null);
+            config.should.be.empty;
         });
 
         it('should fail to load non-existing files for "dev" directory', function() {
@@ -37,45 +35,10 @@ describe(modName, function() {
             should.not.exist(config.blah);
         });
 
-        it('should halt the app on failure', function() {
-            // make the NO_HALT undefined
-            delete process.env.NODE_CONFIG_NO_HALT;
-            // set the environment to non-existing one to get the app halted
-            var dir = 'blah';
-
-            var halted = false;
-            // backup the function definition
-            var exit = process.exit;
-            // backup console functions' definition
-            var err = console.error;
-            var info = console.info;
-            var warn = console.warn;
-
-            // mock the process.exit() function to catch its call
-            process.exit = function(code) {
-                halted = true;
-            }
-
-            // mocks to suppress logging attempts when HATL is being enabled
-            console.error = console.info = console.warn = function() {}
-
-
-            require(modFile)(dir);
-
-            // restore the original definition
-            process.exit = exit;
-            // restore console functions' definition
-            console.error = err;
-            console.info = info;
-            console.warn = warn;
-
-            halted.should.be.true;
-        });
-
         it('should not halt the app on failure', function() {
             // set the directory to non-existing one to cause an error
             var config = require(modFile)('blah');
-            should(config).equal(null);
+            config.should.be.empty;
         });
     });
 

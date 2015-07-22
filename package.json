@@ -1,6 +1,6 @@
 {
     "name": "auto-js-loader",
-    "version": "1.0.4",
+    "version": "1.0.6",
     "description": "Simple utility for Node.js to load js files into JSON object",
     "main": "./index.js",
     "scripts": {
