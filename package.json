@@ -1,0 +1,32 @@
+{
+    "name": "auto-js-loader",
+    "version": "1.0.4",
+    "description": "Simple utility for Node.js to load js files into JSON object",
+    "main": "./index.js",
+    "scripts": {
+        "test": "mocha --reporter spec test/test.js"
+    },
+    "keywords": [
+        "app",
+        "file",
+        "loader",
+        "js"
+    ],
+    "author": {
+        "name": "Jose Armando de Almeida Neto",
+        "email": "ze_armando@msn.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/armandoalmeida/auto-js-loader"
+    },
+    "bugs": {
+        "url": "https://github.com/armandoalmeida/auto-js-loader/issues?state=open"
+    },
+    "readmeFilename": "README.md",
+    "license": "MIT",
+    "devDependencies": {
+        "mocha": "~1.17.1",
+        "should": "3.1.2"
+    }
+}
